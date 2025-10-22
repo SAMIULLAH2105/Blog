@@ -1,6 +1,10 @@
 import { getPosts } from "@/lib/api";
 import BlogCard from "@/components/BlogCard";
 import HeroSection from "@/components/HeroSection";
+import CustomerService from "@/components/CustomerService";
+import LatestNews from "@/components/LatestNews";
+import CurrentProjects from "@/components/CurrentProjects";
+import Work from "@/components/Work";
 
 export default async function Home() {
   let posts = [];
@@ -29,7 +33,11 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <main className="p-8 flex flex-col items-center mt-10 mb-10">
+      <CustomerService />
+      <LatestNews />
+      <CurrentProjects />
+      <Work />
+      {/* <main className="p-8 flex flex-col items-center mt-10 mb-10">
         <h1 className="text-4xl font-bold text-center mb-5 bg-gradient-to-r from-[#343A63] via-[#A3ABE4] to-[#343A63] bg-clip-text text-transparent relative inline-block">
           Featured
           <span className="relative text-transparent bg-gradient-to-r from-[#343A63] via-[#A3ABE4] to-[#343A63] bg-clip-text drop-shadow-[0_0_6px_rgba(167,179,255,0.1)] mx-2"></span>
@@ -67,7 +75,7 @@ export default async function Home() {
             <p className="text-gray-500">No posts found.</p>
           )}
         </div>
-      </main>
+      </main> */}
     </>
   );
 }
