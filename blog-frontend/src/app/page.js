@@ -5,6 +5,7 @@ import CustomerService from "@/components/CustomerService";
 import LatestNews from "@/components/LatestNews";
 import CurrentProjects from "@/components/CurrentProjects";
 import Work from "@/components/Work";
+import Officials from "@/components/Officials";
 
 export default async function Home() {
   let posts = [];
@@ -37,6 +38,7 @@ export default async function Home() {
       <LatestNews />
       <CurrentProjects />
       <Work />
+      <Officials/>
       {/* <main className="p-8 flex flex-col items-center mt-10 mb-10">
         <h1 className="text-4xl font-bold text-center mb-5 bg-gradient-to-r from-[#343A63] via-[#A3ABE4] to-[#343A63] bg-clip-text text-transparent relative inline-block">
           Featured
