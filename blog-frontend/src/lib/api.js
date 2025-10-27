@@ -33,3 +33,6 @@ export async function getAuthor(id) {
 export async function getCategories() {
   return fetchAPI("categories");
 }
+export async function getChairman() {
+  return fetchAPI("chairmen");
+}

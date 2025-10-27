@@ -1,11 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Undo2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [weather, setWeather] = useState(null);
   const [logoMode, setLogoMode] = useState("light");
+
+  const router = useRouter();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -91,6 +96,18 @@ export default function Navbar() {
             </span>
           </div>
 
+          <div className="absolute top-0 right-0 animate-slideIn">
+            <Image
+              src={
+                logoMode === "light" ? "/assets/sun.png" : "/assets/moon.png"
+              }
+              alt="Weather Mode"
+              width={140}
+              height={140}
+              className="drop-shadow-lg"
+            />
+          </div>
+
           <div className="flex flex-row items-end">
             <div>
               <div className="flex flex-row mt-2 mb-0 py-0 ">
@@ -152,9 +169,10 @@ export default function Navbar() {
                     <span className="h-6 w-px bg-black/70"></span>{" "}
                     <span className="text-sm pl-6">اردو</span>
                   </div>
-
+                  {/* HERE IS THE DIV */}
                   <button
                     type="button"
+                    onClick={() => setMegaMenuOpen(!megaMenuOpen)}
                     className="text-black hover:text-black-300 focus:outline-none mr-7"
                   >
                     <svg
@@ -172,6 +190,101 @@ export default function Navbar() {
                       />
                     </svg>
                   </button>
+
+                  {/* Hidden dropdown div (like the screenshot) */}
+                  {megaMenuOpen && (
+                    <>
+                      <div className="absolute left-0 lg:top-[120px] top-[70] lg:m-20 bg-gradient-to-b from-[#1F2A7C] to-[#A7C7E7] text-black shadow-lg p-0 z-50 ">
+                        <button
+                          className="absolute lg:bg-white top-4 right-4 text-black text:sm lg:text-xl font-bold hover:text-gray-300 rounded-full lg:p-1 "
+                          onClick={() => setMegaMenuOpen(false)}
+                        >
+                          <Undo2 />
+                        </button>
+
+                        <div className="flex flex-row items-center px-15 border-b border-white/30 mt-8 mb-4 lg:mb-0 lg:mt-4 lg:p-4">
+                          <a href="/" className="text-2xl font-bold ">
+                            <Image
+                              src={
+                                logoMode === "dark"
+                                  ? "/assets/dark_logo.png"
+                                  : "/assets/light_logo.png"
+                              }
+                              alt="Logo"
+                              height={40}
+                              width={90}
+                            />
+                          </a>
+                          <span
+                            className={`ml-4 text-sm font-bold ${
+                              logoMode === "dark" ? "text-black" : "text-white"
+                            }`}
+                          >
+                            KARACHI WEATHER & <br />
+                            SEWERAGE CORPORATION
+                          </span>
+                        </div>
+
+                        {/* Headings row */}
+
+                        <div className="grid  grid-cols-6 bg-[#1F2A7C] text-white lg:text-lg font-semibold rounded-t-md text-[7px] ">
+                          <h2 className="p-3 text-center">About Us</h2>
+                          <h2 className="p-3 text-center">Our Projects</h2>
+                          <h2 className="p-3 text-center">Work with Us</h2>
+                          <h2 className="p-3 text-center">Careers</h2>
+                          <h2 className="p-1 text-center">
+                            Right to Information
+                          </h2>
+                          <h2 className="p-3 text-center">News & Updates</h2>
+                        </div>
+
+                        {/* Content rows */}
+                        <div className="grid grid-cols-6 gap-2 lg:gap-8 mt-6 lg:text-sm lg:m-14 text-[7px] px-2">
+                          <ul className="space-y-2">
+                            <li>History</li>
+                            <li>Vision</li>
+                            <li>SDGs Roadmap</li>
+                            <li>Board of Directors</li>
+                            <li>Management Team</li>
+                          </ul>
+
+                          <ul className="space-y-2">
+                            <li>PSDP/ADP Projects</li>
+                            <li>PPP Projects</li>
+                            <li>IBRD/AIIB Foreign-Funded Projects</li>
+                            <li>Employee & Customer Initiatives</li>
+                          </ul>
+
+                          <ul className="space-y-2 lg:ml-3">
+                            <li>Tenders</li>
+                            <li>Licenses</li>
+                            <li>Collaborations</li>
+                            <li>Investment Opportunities</li>
+                          </ul>
+
+                          <ul className="space-y-2 lg:ml-12">
+                            <li>Recruitment</li>
+                            <li>Graduate Program</li>
+                            <li>Consultancies</li>
+                          </ul>
+
+                          <ul className="space-y-2 lg:ml-3">
+                            <li>Groundwater Licence Form</li>
+                            <li>Extraction Regulations</li>
+                            <li>Employee Details</li>
+                            <li>KW&SC Budget</li>
+                            <li>Signed CoC</li>
+                          </ul>
+
+                          <ul className="space-y-2 lg:ml-9">
+                            <li>Latest Updates</li>
+                            <li>Press Release</li>
+                            <li>Media Gallery</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Buttons */}
@@ -179,6 +292,7 @@ export default function Navbar() {
                   <button
                     className="w-[114px] px-3 py-1.5 text-white text-sm font-medium
                              bg-green-600 hover:bg-green-700 transition shadow-md border-1 border-white/80"
+                    onClick={() => router.push("/bestexeng")}
                   >
                     Best Ex.Eng
                   </button>

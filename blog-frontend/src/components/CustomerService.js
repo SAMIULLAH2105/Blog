@@ -129,10 +129,10 @@ const CustomerServiceMenu = () => {
 
         {/* Service Cards Container (The Carousel) */}
         <div className="relative flex items-center justify-center">
-          {/* Left Scroll Button (Hidden on Mobile/Small screens) */}
+          {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="hidden lg:flex absolute left-0 z-10 p-3 bg-white/70 backdrop-blur-sm rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-110 border border-gray-200"
+            className="hidden lg:flex absolute -left-6 z-10 p-3 bg-white/70 backdrop-blur-sm rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-110 border border-gray-200"
             aria-label="Scroll Left"
           >
             <ChevronLeft size={24} className="text-gray-600" />
@@ -141,20 +141,18 @@ const CustomerServiceMenu = () => {
           {/* Scrollable Content Area */}
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto justify-start md:justify-center py-4 space-x-4 md:space-x-8 lg:space-x-12 scrollbar-hide snap-x snap-mandatory"
+            className="flex overflow-x-auto justify-start md:justify-center py-4 space-x-4 md:space-x-8 lg:space-x-12 scrollbar-hide snap-x snap-mandatory mx-8"
             style={{
               WebkitOverflowScrolling: "touch",
               msOverflowStyle: "none",
               scrollbarWidth: "none",
-            }} // Hide scrollbar
+            }}
           >
             {serviceItems.map((item, index) => (
               <div
                 key={index}
                 className={`snap-center ${
-                  index > 0
-                    ? "border-l border-gray-300 pl-4" // Add border, padding to the left for separation
-                    : "pr-4" // Add right padding to the first item for consistent spacing
+                  index > 0 ? "border-l border-gray-300 pl-4" : "pr-4"
                 }`}
               >
                 <ServiceCard item={item} />
@@ -162,10 +160,10 @@ const CustomerServiceMenu = () => {
             ))}
           </div>
 
-          {/* Right Scroll Button (Visible on all screens for the original design) */}
+          {/* Right Scroll Button */}
           <button
             onClick={() => scroll("right")}
-            className="absolute -right-2 md:right-0 z-10 p-3 bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-gray-200"
+            className="absolute -right-6 md:-right-8 z-10 p-3 bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-gray-200"
             aria-label="Scroll Right"
           >
             <ChevronRight size={24} className="text-gray-600" />

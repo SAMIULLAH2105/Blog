@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "engineers",
+  "info": {
+    "singularName": "engineer",
+    "pluralName": "engineers",
+    "displayName": "Engineer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "designation": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "rating": {
+      "type": "float"
+    },
+    "profile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

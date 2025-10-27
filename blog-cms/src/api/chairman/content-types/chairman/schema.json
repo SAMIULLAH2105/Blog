@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chairmen",
+  "info": {
+    "singularName": "chairman",
+    "pluralName": "chairmen",
+    "displayName": "Chairman"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Message": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
