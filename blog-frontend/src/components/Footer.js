@@ -1,10 +1,20 @@
+"use client";
 import React from "react";
+import { useLocale } from "../context/LocaleContext";
 
 export default function Footer() {
+  const { locale, messages } = useLocale();
+
+  const t = (key) => messages?.footer?.[key] || key;
+  const isUrdu = locale === "ur";
+
   return (
-    <footer className="text-white">
+    <footer
+      className={`text-white ${isUrdu ? "text-right font-[Noto Nastaliq Urdu]" : "text-left"}`}
+      dir={isUrdu ? "rtl" : "ltr"}
+    >
       {/* Image above footer */}
-      <div className="w-full ">
+      <div className="w-full">
         <img
           src="/assets/footer-image.png"
           alt="footer cover"
@@ -17,80 +27,77 @@ export default function Footer() {
           {/* Column 1 - Explore */}
           <div>
             <h4 className="font-semibold mb-3 text-sm inline-block border-b-2 border-yellow-400 pb-1">
-              EXPLORE
+              {t("exploreTitle")}
             </h4>
             <ul className="space-y-2 text-sm">
-              <li>Home</li>
-              <li>Blog Posts</li>
-              <li>Categories</li>
-              <li>About Me</li>
-              <li>Contact</li>
+              <li>{t("home")}</li>
+              <li>{t("blogPosts")}</li>
+              <li>{t("categories")}</li>
+              <li>{t("about")}</li>
+              <li>{t("contact")}</li>
             </ul>
           </div>
 
           {/* Column 2 - Resources */}
           <div>
             <h4 className="font-semibold mb-3 text-sm inline-block border-b-2 border-yellow-400 pb-1">
-              RESOURCES
+              {t("resourcesTitle")}
             </h4>
-
             <ul className="space-y-2 text-sm">
-              <li>Web Development</li>
-              <li>JavaScript Guides</li>
-              <li>MERN Stack Projects</li>
-              <li>Career Advice</li>
-              <li>Open Source</li>
+              <li>{t("webDevelopment")}</li>
+              <li>{t("jsGuides")}</li>
+              <li>{t("mernProjects")}</li>
+              <li>{t("careerAdvice")}</li>
+              <li>{t("openSource")}</li>
             </ul>
           </div>
 
-          {/* Column 3 - About + Newsletter */}
+          {/* Column 3 - Newsletter */}
           <div>
             <h4 className="font-semibold mb-3 text-sm inline-block border-b-2 border-yellow-400 pb-1">
-              NEWSLETTER
+              {t("newsletterTitle")}
             </h4>
-            <p className="text-sm text-gray-300 mb-3">
-              Subscribe to get the latest blogs and updates delivered straight
-              to your inbox.
-            </p>
+            <p className="text-sm text-gray-300 mb-3">{t("newsletterDesc")}</p>
 
             <form className="flex items-center gap-3">
               <input
                 type="email"
-                placeholder="Enter your email*"
+                placeholder={t("emailPlaceholder")}
                 className="w-full px-3 py-2 bg-transparent border border-white/20 text-white placeholder-gray-300 focus:outline-none"
               />
               <button className="px-3 py-2 bg-yellow-400 text-black font-semibold">
-                Subscribe
+                {t("subscribe")}
               </button>
             </form>
 
-            <div className="flex items-center gap-4 mt-4 text-gray-300">
+            <div
+              className={`flex items-center gap-4 mt-4 text-gray-300 ${
+                isUrdu ? "justify-end" : ""
+              }`}
+            >
               <a
                 href="https://linkedin.com/in/shaikhsamiullah"
-                aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-400"
               >
-                LinkedIn
+                {t("linkedin")}
               </a>
               <a
                 href="https://twitter.com/"
-                aria-label="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-400"
               >
-                Twitter
+                {t("twitter")}
               </a>
               <a
                 href="https://github.com/SAMIULLAH2105"
-                aria-label="GitHub"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-400"
               >
-                GitHub
+                {t("github")}
               </a>
             </div>
           </div>
@@ -101,8 +108,8 @@ export default function Footer() {
 
         {/* bottom copyright */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-4 text-gray-300 text-sm text-center">
-          © {new Date().getFullYear()}. All Rights Reserved by{" "}
-          <span className="font-semibold text-white">Code Chronicles</span>
+          © {new Date().getFullYear()} {t("rights")}
+          <span className="font-semibold text-white"> Code Chronicles</span>
         </div>
       </div>
     </footer>
